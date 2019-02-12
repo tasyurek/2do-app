@@ -5,10 +5,15 @@ import AddCard from "./AddCard";
 
 class CardList extends Component {
   render() {
-    const pId = this.props.projectId;
     const cards = this.props.cards;
+    const projects = this.props.projects;
 
-    let cardList = cards.filter(card => card.pId === pId);
+    let activeProject = projects.filter(project => project.active);
+    activeProject = activeProject[0];
+    console.log(activeProject);
+    let cardList = cards.filter(card => {
+      return card.pId === activeProject.id;
+    });
 
     cardList = cardList.map(card => {
       return (
@@ -17,13 +22,12 @@ class CardList extends Component {
         </div>
       );
     });
-
     return (
       <div className="content">
         <h3 className="dark-text">Cards</h3>
         <div className="card-list">
           {cardList}
-          <AddCard pId={pId} />
+          <AddCard pId={activeProject.id} />
         </div>
       </div>
     );
@@ -33,7 +37,7 @@ class CardList extends Component {
 const mapStateToProps = state => {
   return {
     cards: state.cardReducer,
-    projectId: state.projectFilterReducer
+    projects: state.projectReducer
   };
 };
 

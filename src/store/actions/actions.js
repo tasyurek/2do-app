@@ -11,3 +11,5 @@ export const DELETE_TODO = "DELETE_TODO";
 export const SHOW_CARDS = "SHOW_CARDS";
 
 export const FILTER_PROJECT = "FILTER_PROJECT";
+
+export const SET_ACTIVE = "SET_ACTIVE";

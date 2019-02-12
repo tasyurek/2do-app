@@ -8,7 +8,6 @@ const cards = [
 ];
 
 const cardReducer = (state = cards, action) => {
-  console.log("card action type", action.type);
   switch (action.type) {
     case CREATE_CARD:
       return [

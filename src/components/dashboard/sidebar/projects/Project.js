@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import projectFilter from "../../../../store/actions/projectFilter";
 import { connect } from "react-redux";
 import ProjectSettings from "./ProjectSettings";
+import setActiveProject from "../../../../store/actions/setActiveProject";
 
 class Project extends Component {
   state = { active: false, hover: false, openSettings: false };
 
   handleClick = () => {
     this.props.filterProject(this.props.project.id);
+    this.props.setActiveProject(this.props.project.id);
     this.setState({ active: true });
   };
 
@@ -25,7 +27,7 @@ class Project extends Component {
 
   render() {
     let project = this.props.project;
-    let isActive = this.state.active ? "active" : "";
+    let isActive = this.props.active ? "active" : "inActive";
     let cogAnimation = this.state.openSettings ? "open-cog-animation" : "";
 
     return (
@@ -59,10 +61,17 @@ class Project extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    filterProject: id => dispatch(projectFilter(id))
+    filterProject: id => dispatch(projectFilter(id)),
+    setActiveProject: id => dispatch(setActiveProject(id))
   };
 };
-
+/*
+const mapStateToProps = state => {
+  return {
+    project: state.projectReducer
+  };
+};
+*/
 export default connect(
   null,
   mapDispatchToProps

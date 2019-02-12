@@ -4,7 +4,7 @@
   width: 300px;
   min-width: 300px;
   height: 100vh;
-  background-color: #212329;
+  background-color: var(--secondary-color);
   box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -33,7 +33,6 @@
 }
 
 .project:hover {
-  background-color: var(--hover-bg-color);
   border-left: 3px solid var(--uniqe-color);
   transition: 0.2s ease-out;
   cursor: pointer;
@@ -86,4 +85,8 @@
 #active {
   border-left: 3px solid var(--uniqe-color);
   background-color: var(--card-color);
+}
+
+#inActive {
+  background-color: var(--secondary-color);
 }

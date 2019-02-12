@@ -62,7 +62,7 @@ export class CreateProject extends Component {
     ) : (
       <div>{createNewProjectButton}</div>
     );
-    return <div className="create-project">{createProjectForm}</div>;
+    return <div className="create-project">{createProjectForm} </div>;
   }
 }
 
