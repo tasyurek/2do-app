@@ -8,7 +8,7 @@ class Project extends Component {
   state = { active: false, hover: false, openSettings: false };
 
   handleClick = () => {
-    this.props.filterProject(this.props.project.id);
+    // this.props.filterProject(this.props.project.id);
     this.props.setActiveProject(this.props.project.id);
     this.setState({ active: true });
   };
@@ -40,7 +40,8 @@ class Project extends Component {
       >
         <div className="project-header">
           <p className="project-title">{project.title}</p>
-          {(this.state.hover || this.state.openSettings) && (
+          {((this.props.active && this.state.hover) ||
+            this.state.openSettings) && (
             <i
               className="fas fa-cog"
               id={cogAnimation}
@@ -49,7 +50,7 @@ class Project extends Component {
           )}
         </div>
 
-        {this.state.openSettings && (
+        {this.props.active && (
           <div className="project-body">
             {this.state.openSettings && <ProjectSettings />}
           </div>
